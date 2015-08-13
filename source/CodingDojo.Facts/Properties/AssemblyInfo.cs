@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CodingDojo")]
+[assembly: AssemblyTitle("CodingDojo.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CodingDojo")]
+[assembly: AssemblyProduct("CodingDojo.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("81648b7b-9d7e-4c80-bf4c-df6f8ac6ecb2")]
+[assembly: Guid("c5864a51-0e1b-4e93-b2f9-ace2d8a018f3")]
 
 // Version information for an assembly consists of the following four values:
 //

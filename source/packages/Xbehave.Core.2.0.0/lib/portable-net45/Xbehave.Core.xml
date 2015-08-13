@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbehave.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Xbehave.Sdk.IFilter`1">
+            <summary>
+            Filters a list of <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of items contained in a list.</typeparam>
+        </member>
+        <member name="M:Xbehave.Sdk.IFilter`1.Filter(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Filters a list of <typeparamref name="T"/>.
+            </summary>
+            <param name="source">The list to filter.</param>
+            <returns>The filtered list.</returns>
+        </member>
+        <member name="T:Xbehave.Sdk.IStep">
+            <summary>
+            Represents a single step in a scenario.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.IStep.Scenario">
+            <summary>
+            Gets the scenario this step belongs to.
+            </summary>
+        </member>
+        <member name="T:Xbehave.Sdk.IScenario">
+            <summary>
+            Represents a scenario.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.IScenario.DisplayName">
+            <summary>
+            Gets the display name of the scenario.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.IScenario.ScenarioOutline">
+            <summary>
+            Gets the scenario outline this scenario belongs to.
+            </summary>
+        </member>
+        <member name="T:Xbehave.BackgroundAttribute">
+            <summary>
+            Applied to a method to indicate a background for each scenario defined in the same feature class.
+            </summary>
+        </member>
+        <member name="T:Xbehave.DisposableExtensions">
+            <summary>
+            <see cref="T:System.IDisposable"/> extensions.
+            </summary>
+        </member>
+        <member name="M:Xbehave.DisposableExtensions.Using``1(``0,Xbehave.Sdk.IStepContext)">
+            <summary>
+            Immediately registers the <see cref="T:System.IDisposable"/> object for disposal
+            after all steps in the current scenario have been executed.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="obj">The object to be disposed.</param>
+            <param name="stepContext">The execution context for the current step.</param>
+            <returns>The object.</returns>
+        </member>
+        <member name="T:Xbehave.ExampleAttribute">
+            <summary>
+            Provides example values for a scenario passed as arguments to the scenario method.
+            This attribute is designed as a synonym of <see cref="T:Xunit.InlineDataAttribute"/>,
+            which is the most commonly used data attribute, but you can also use any type of attribute derived from
+            <see cref="T:Xunit.Sdk.DataAttribute"/> to provide a data source for a scenario.
+            E.g. <see cref="T:Xunit.InlineDataAttribute"/> or
+            <see cref="T:Xunit.MemberDataAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:Xbehave.ExampleAttribute.#ctor(System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Xbehave.ExampleAttribute"/> class.
+            This attribute is designed as a synonym of <see cref="T:Xunit.InlineDataAttribute"/>,
+            which is the most commonly used data attribute, but you can also use any type of attribute derived from
+            <see cref="T:Xunit.Sdk.DataAttribute"/> to provide a data source for a scenario.
+            E.g. <see cref="T:Xunit.InlineDataAttribute"/> or
+            <see cref="T:Xunit.MemberDataAttribute"/>.
+            </summary>
+            <param name="data">The data values to pass to the scenario.</param>
+        </member>
+        <member name="M:Xbehave.ExampleAttribute.GetData(System.Reflection.MethodInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Xbehave.Sdk.IStepBuilder">
+            <summary>
+            Provides methods for building steps.
+            </summary>
+        </member>
+        <member name="M:Xbehave.Sdk.IStepBuilder.Skip(System.String)">
+            <summary>
+            Indicates that the step will not be executed.
+            </summary>
+            <param name="reason">The reason for not executing the step.</param>
+            <returns>An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.</returns>
+            <remarks>If the <paramref name="reason"/> is <c>null</c> then the step will not be skipped.</remarks>
+        </member>
+        <member name="M:Xbehave.Sdk.IStepBuilder.Teardown(System.Action)">
+            <summary>
+            Declares a teardown action (related to this step and/or previous steps) which will be executed
+            after all steps in the current scenario have been executed.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.Sdk.IStepBuilder.OnFailure(Xbehave.RemainingSteps)">
+            <summary>
+            Defines the behavior of remaining steps if this step fails.
+            </summary>
+            <param name="behavior">The behavior of remaining steps.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="T:Xbehave.RemainingSteps">
+            <summary>
+            Indicates the behavior of remaining steps when a step fails.
+            </summary>
+        </member>
+        <member name="F:Xbehave.RemainingSteps.Skip">
+            <summary>
+            Skip remaining steps.
+            </summary>
+        </member>
+        <member name="F:Xbehave.RemainingSteps.Run">
+            <summary>
+            Run remaining steps.
+            </summary>
+        </member>
+        <member name="T:Xbehave.Sdk.IStepContext">
+            <summary>
+            A scenario step context.
+            </summary>
+        </member>
+        <member name="M:Xbehave.Sdk.IStepContext.Using(System.IDisposable)">
+            <summary>
+            Immediately registers the <see cref="T:System.IDisposable"/> object for disposal
+            after all steps in the current scenario have been executed.
+            </summary>
+            <param name="disposable">The object to be disposed.</param>
+            <returns>The current <see cref="T:Xbehave.Sdk.IStepContext"/>.</returns>
+        </member>
+        <member name="P:Xbehave.Sdk.IStepContext.Step">
+            <summary>
+            Gets the step which owns this context.
+            </summary>
+        </member>
+        <member name="T:Xbehave.ScenarioAttribute">
+            <summary>
+            Applied to a method to indicate the definition of a scenario.
+            A scenario can also be fed examples from a data source, mapping to parameters on the scenario method.
+            If the data source contains multiple rows,
+            then the scenario method is executed multiple times (once with each data row).
+            Examples can be fed to the scenario by applying one or more instances of <see cref="T:Xbehave.ExampleAttribute"/>
+            or any other attribute inheriting from <see cref="T:Xunit.Sdk.DataAttribute"/>.
+            E.g. <see cref="T:Xunit.InlineDataAttribute"/> or
+            <see cref="T:Xunit.MemberDataAttribute"/>.
+            </summary>
+        </member>
+        <member name="T:Xbehave.Sdk.IStepDefinition">
+            <summary>
+            Provides the definition of a step within a scenario.
+            </summary>
+        </member>
+        <member name="M:Xbehave.Sdk.IStepDefinition.Skip(System.String)">
+            <summary>
+            Indicates that the step will not be executed.
+            </summary>
+            <param name="reason">The reason for not executing the step.</param>
+            <returns>An instance of <see cref="T:Xbehave.Sdk.IStepDefinition"/>.</returns>
+            <remarks>If the <paramref name="reason"/> is <c>null</c> then the step will not be skipped.</remarks>
+        </member>
+        <member name="M:Xbehave.Sdk.IStepDefinition.Teardown(System.Action)">
+            <summary>
+            Declares a teardown action (related to this step and/or previous steps) which will be executed
+            after all steps in the current scenario have been executed.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepDefinition"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.Sdk.IStepDefinition.OnFailure(Xbehave.RemainingSteps)">
+            <summary>
+            Defines the behavior of remaining steps if this step fails.
+            </summary>
+            <param name="behavior">The behavior of remaining steps.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepDefinition"/>.
+            </returns>
+        </member>
+        <member name="P:Xbehave.Sdk.IStepDefinition.Text">
+            <summary>
+            Gets or sets the natural language associated with step.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.IStepDefinition.Body">
+            <summary>
+            Gets or sets the body of the step.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.IStepDefinition.Teardowns">
+            <summary>
+            Gets the teardowns to be invoked after the execution of the scenario in which the step participates.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.IStepDefinition.SkipReason">
+            <summary>
+            Gets or sets the reason for skipping this step.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.IStepDefinition.FailureBehavior">
+            <summary>
+            Gets or sets the behavior of remaining steps if this step fails.
+            </summary>
+        </member>
+        <member name="T:Xbehave.Sdk.CurrentThread">
+            <summary>
+            Represents the currently executing thread.
+            </summary>
+        </member>
+        <member name="P:Xbehave.Sdk.CurrentThread.StepDefinitions">
+            <summary>
+            Gets the step definitions for the currently executing thread.
+            </summary>
+        </member>
+        <member name="T:Xbehave.Sdk.Guard">
+            <summary>
+            Provides guard clauses.
+            </summary>
+        </member>
+        <member name="M:Xbehave.Sdk.Guard.AgainstNullArgument``1(System.String,``0)">
+            <summary>
+            Guards against a null argument.
+            </summary>
+            <typeparam name="TArgument">The type of the argument.</typeparam>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="argument">The argument.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <c>null</c>.</exception>
+            <remarks><typeparamref name="TArgument"/> is restricted to reference types to avoid boxing of value type objects.</remarks>
+        </member>
+        <member name="M:Xbehave.Sdk.Guard.AgainstNullArgumentIfNullable``1(System.String,``0)">
+            <summary>
+            Guards against a null argument if <typeparamref name="TArgument"/> can be <c>null</c>.
+            </summary>
+            <typeparam name="TArgument">The type of the argument.</typeparam>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="argument">The argument.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <c>null</c>.</exception>
+            <remarks>
+            Performs a type check to avoid boxing of value type objects.
+            </remarks>
+        </member>
+        <member name="M:Xbehave.Sdk.Guard.AgainstNullArgumentProperty``1(System.String,System.String,``0)">
+            <summary>
+            Guards against a null argument property value.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="argumentProperty">The argument property.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="argumentProperty"/> is <c>null</c>.</exception>
+            <remarks><typeparamref name="TProperty"/> is restricted to reference types to avoid boxing of value type objects.</remarks>
+        </member>
+        <member name="M:Xbehave.Sdk.Guard.AgainstNullArgumentPropertyIfNullable``1(System.String,System.String,``0)">
+            <summary>
+            Guards against a null argument property value if <typeparamref name="TProperty"/> can be <c>null</c>.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="argumentProperty">The argument property.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="argumentProperty"/> is <c>null</c>.</exception>
+            <remarks>
+            Performs a type check to avoid boxing of value type objects.
+            </remarks>
+        </member>
+        <member name="T:Xbehave.Sdk.Guard.ValidatedNotNullAttribute">
+            <summary>
+            When applied to a parameter, this attribute provides an indication to code analysis that the argument has been null checked.
+            </summary>
+        </member>
+        <member name="T:Xbehave.StringExtensions">
+            <summary>
+            Provides access to step definition methods.
+            </summary>
+        </member>
+        <member name="M:Xbehave.StringExtensions.x(System.String,System.Action)">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions.f(System.String,System.Action)">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions._(System.String,System.Action)">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions.x(System.String,System.Action{Xbehave.Sdk.IStepContext})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions.f(System.String,System.Action{Xbehave.Sdk.IStepContext})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions._(System.String,System.Action{Xbehave.Sdk.IStepContext})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions.x(System.String,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions.f(System.String,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions._(System.String,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions.x(System.String,System.Func{Xbehave.Sdk.IStepContext,System.Threading.Tasks.Task})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions.f(System.String,System.Func{Xbehave.Sdk.IStepContext,System.Threading.Tasks.Task})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Xbehave.StringExtensions._(System.String,System.Func{Xbehave.Sdk.IStepContext,System.Threading.Tasks.Task})">
+            <summary>
+            Defines a step in the current scenario.
+            </summary>
+            <param name="text">The step text.</param>
+            <param name="body">The action that will perform the step.</param>
+            <returns>
+            An instance of <see cref="T:Xbehave.Sdk.IStepBuilder"/>.
+            </returns>
+        </member>
+    </members>
+</doc>
