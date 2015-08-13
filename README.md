@@ -1,4 +1,4 @@
 CodingDojo
 ==========
 
-Solution template for Coding Dojos (NUnit, Machine.Specifications, FluentAssertions, FakeItEasy, NBuilder)
+Empty Visual Studio solution for Coding Dojos with xUnit, xBehave, FluentAssertions, FakeItEasy and StyleCop code analyzers.
